@@ -1,16 +1,16 @@
 var fs = require("fs");
 var _ = require("lodash");
 var path = require("path");
-var Provider = require("truffle-provider");
-var TruffleError = require("truffle-error");
+var Provider = require("moxie-provider");
+var MoxieError = require("moxie-error");
 var Module = require('module');
 var findUp = require("find-up");
 var originalrequire = require("original-require");
 
-var DEFAULT_CONFIG_FILENAME = "truffle.js";
-var BACKUP_CONFIG_FILENAME = "truffle-config.js"; // For Windows + Command Prompt
+var DEFAULT_CONFIG_FILENAME = "moxie.js";
+var BACKUP_CONFIG_FILENAME = "moxie-config.js"; // For Windows + Command Prompt
 
-function Config(truffle_directory, working_directory, network) {
+function Config(moxie_directory, working_directory, network) {
   var self = this;
 
   var default_tx_values = {
@@ -20,7 +20,7 @@ function Config(truffle_directory, working_directory, network) {
   };
 
   this._values = {
-    truffle_directory: truffle_directory || path.resolve(path.join(__dirname, "../")),
+    moxie_directory: moxie_directory || path.resolve(path.join(__dirname, "../")),
     working_directory: working_directory || process.cwd(),
     network: network,
     networks: {},
@@ -31,11 +31,11 @@ function Config(truffle_directory, working_directory, network) {
     build: null,
     resolver: null,
     artifactor: null,
-    ethpm: {
+    vappm: {
       ipfs_host: "ipfs.infura.io",
       ipfs_protocol: "https",
       registry: "0x8011df4830b4f696cd81393997e5371b93338878",
-      install_provider_uri: "https://ropsten.infura.io/truffle"
+      install_provider_uri: "https://ropsten.infura.io/moxie"
     },
     solc: {
       optimizer: {
@@ -50,7 +50,7 @@ function Config(truffle_directory, working_directory, network) {
 
   var props = {
     // These are already set.
-    truffle_directory: function() {},
+    moxie_directory: function() {},
     working_directory: function() {},
     network: function() {},
     networks: function() {},
@@ -58,7 +58,7 @@ function Config(truffle_directory, working_directory, network) {
     build: function() {},
     resolver: function() {},
     artifactor: function() {},
-    ethpm: function() {},
+    vappm: function() {},
     solc: function() {},
     logger: function() {},
 
@@ -81,7 +81,7 @@ function Config(truffle_directory, working_directory, network) {
       return /.*\.(js|es|es6|jsx|sol)$/
     },
     example_project_directory: function() {
-      return path.join(self.truffle_directory, "example");
+      return path.join(self.moxie_directory, "example");
     },
     network_id: {
       get: function() {
@@ -241,7 +241,7 @@ Config.detect = function(options, filename) {
     if (checkBackup == true) {
       return this.detect(options, BACKUP_CONFIG_FILENAME);
     } else {
-      throw new TruffleError("Could not find suitable configuration file.");
+      throw new MoxieError("Could not find suitable configuration file.");
     }
   }
 

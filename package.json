@@ -1,31 +1,32 @@
 {
-  "name": "truffle-config",
+  "name": "moxie-config",
   "version": "1.0.4",
-  "description": "Utility for interacting with truffle.js files",
+  "description": "Utility for interacting with moxie.js files",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trufflesuite/truffle-config.git"
+    "url": "git+https://github.com/moxiesuite/moxie-config.git"
   },
   "keywords": [
-    "ethereum",
-    "truffle",
+    "vapory",
+    "moxie",
     "config"
   ],
   "author": "Tim Coulter <tim.coulter@consensys.net>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/trufflesuite/truffle-config/issues"
+    "url": "https://github.com/moxiesuite/moxie-config/issues"
   },
-  "homepage": "https://github.com/trufflesuite/truffle-config#readme",
+  "homepage": "https://github.com/moxiesuite/moxie-config#readme",
   "dependencies": {
     "find-up": "^2.1.0",
     "lodash": "^4.17.4",
     "original-require": "^1.0.0",
-    "truffle-error": "^0.0.2",
-    "truffle-provider": "^0.0.4"
+    "moxie-error": "^0.0.2",
+    "moxie-provider": "^0.0.4",
+    "mocha": "^3.2.0"
   }
 }

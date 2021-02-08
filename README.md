@@ -1,2 +1,2 @@
-# truffle-config
-Utility for interacting with truffle.js files
+# moxie-config
+Utility for interacting with moxie.js files
